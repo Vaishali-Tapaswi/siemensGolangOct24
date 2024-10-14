@@ -1,3 +1,18 @@
+Lab7 -  Understand defer
+        package main 
+        import "fmt"
+        func main(){
+        	defer fmt.Println("Hello ")
+        	add()
+        	fmt.Println("World ")
+        }
+        
+        func add(){
+        	defer fmt.Println("in add function - defser ")
+        	fmt.Println("in function add line1 ")
+        }
+        invoke defer in for loop (check defer stack)
+
 Lab6 - Asgn1
         Accept a number from user and print Fibonacci series till that number
             fmt -> scan 
