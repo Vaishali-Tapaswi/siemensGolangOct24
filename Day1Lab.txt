@@ -1,3 +1,33 @@
+Lab9 - try invoking defer from main, f , g and observe difference 
+        package main
+        
+        import "fmt"
+        
+        func main() {
+        	defer handler()
+        	f()
+        	fmt.Println("Returned normally from f.")
+        }
+        func f() {
+        
+        	fmt.Println("Calling g.")
+        	g(5)
+        	fmt.Println("Returned normally from g.")
+        }
+        
+        func g(i int) {
+        	if i > 3 {
+        		fmt.Println("Panicking!")
+        		panic("panicked for .....")
+        	}
+        	fmt.Println("Printing in g", i)
+        }
+        
+        func handler() {
+        	r := recover()
+        	fmt.Println("In recover ", r)
+        }
+
 Lab8 - closures 
         package main
         import "fmt"
