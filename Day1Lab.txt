@@ -1,3 +1,23 @@
+Lab3 - Use strconv package to convert String to Integer 
+                    https://go.dev/tour/flowcontrol/1
+          Show sum of arguments passed 
+          package main
+          import (
+          	"fmt"
+          	"os"
+          )
+          
+          func main(){
+          	strarr := os.Args
+          	fmt.Println(strarr)
+          	cnt := len(os.Args)
+          	fmt.Println("Length = " , cnt)
+          	if cnt <= 1 {
+          		fmt.Println("No additional Arguments ")
+          	} else {
+          		fmt.Println("Additional Arguments ")
+          	}
+          }
 Lab2- 
           Write Lab2.go
           package main
