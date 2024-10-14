@@ -1,0 +1,14 @@
+Lab1 - confirm go installation
+          go version
+       Visual Studio code (go extension)
+      Create Demo1 folder and Lab1.go 
+         package main
+         import "fmt"
+         func main() {
+          	fmt.Println("Hello World !!")
+          }
+  cmd>go run Lab1.go 
+  cmd>go build Lab1.go 
+        observe Lab1.exe getting created
+  cmd>Lab1.exe 
+  Check API docuementation for package fmt 
