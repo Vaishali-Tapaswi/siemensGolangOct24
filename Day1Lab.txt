@@ -1,3 +1,47 @@
+Lab6 - Asgn1
+        Accept a number from user and print Fibonacci series till that number
+            fmt -> scan 
+
+       Asgn2 
+        Accept 5 strings from user and sort and print the same
+          scan, 
+
+
+Lab5- Pass by value vs pass by reference
+      package main
+      import (
+      	"fmt"
+      )
+      func increment(ptoint *int ){
+      	fmt.Println("in increment with no = "  , ptoint)
+      	*ptoint = *ptoint + 1
+      	fmt.Println("in increment changed number to  = "  , ptoint)
+      }
+      func main() {
+      	no := 200
+      	fmt.Println("No  = ", no)
+      	increment(&no)
+      	fmt.Println("No  = ", no)	
+      }
+
+Lab4 - Create Lab4.go 
+          package main
+          import (
+          	"fmt"
+          )
+          
+          func main() {
+          	fmt.Println("Hello World !!")
+          	sum, sub := calc(100,50)
+          	fmt.Println("Sum = ", sum, ", Sub = ", sub)	
+          }
+       create Lab4Helper.go 
+          package main
+          func calc(no1, no2 int )(sum, sub int){
+          	sum, sub = no1+no2, no1-no2
+          	return 
+          }
+    cmd>go run Lab4.go Lab4Helper.go 
 Lab3 - Use strconv package to convert String to Integer 
                     https://go.dev/tour/flowcontrol/1
           Show sum of arguments passed 
