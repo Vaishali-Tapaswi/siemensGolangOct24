@@ -1,3 +1,50 @@
+Lab8 - closures 
+        package main
+        import "fmt"
+        
+        func adder() func(int) int {
+        	sum := 0
+        	return func(x int) int {
+        		sum += x
+        		return sum
+        	}
+        }
+        
+        
+        func test(/*input args */) func() (string){
+        
+        	return func () (string) {
+        		fmt.Println("M1 .... ")
+        		return "m111111"
+        	}
+        }
+        
+        func greet(fptr func (string) , str string ){
+        	fptr(str)
+        }
+        func hi(str string){
+        	fmt.Println("hi invoked with " , str)
+        }
+        func bye(str string){
+        	fmt.Println("bye invoked with " , str)
+        }
+        func main(){
+        	//hello("abc")
+        	greet(hi, "Vaishali")
+        	greet(bye, "Vaishali")
+        
+        	fp := test()
+        	fp()
+        
+        	adder1:= adder()
+        	fmt.Println("adder with 10 " , adder1(10))
+        	fmt.Println("adder with 10 " , adder1(10))
+        	fmt.Println("adder with 10 " , adder1(10))
+        	fmt.Println("adder with 10 " , adder1(10))
+        }
+        
+        
+
 Lab7 -  Understand defer
         package main 
         import "fmt"
