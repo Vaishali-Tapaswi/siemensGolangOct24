@@ -1,3 +1,39 @@
+Lab2- 
+          Write Lab2.go
+          package main
+
+          import "fmt"
+          
+          func calc(no1, no2 int )(int, int){
+          	return no1+no2, no1-no2
+          }
+          func main() {
+          	fmt.Println("Hello World !!")
+          	sum, sub := calc(100,50)
+          	fmt.Println("Sum = ", sum, ", Sub = ", sub)	
+          }
+
+          Watch 
+                    1. modify return to have single value 
+                    2. import and don't use, create variable and not used 
+          Modify code to write one more method for swapping of two input strings 
+
+          Modify Lab1 to import os 
+                    package main
+                    import "fmt"
+                    import "os"
+                    
+                    func main() {
+                              fmt.Println("Hello World !!")
+                              hname, err := os.Hostname()
+                              fmt.Println(hname, err)
+                    }
+          Or
+                    import (
+                    	"fmt"
+                    	"os"
+                    )
+          
 Lab1 - confirm go installation
           go version
        Visual Studio code (go extension)
