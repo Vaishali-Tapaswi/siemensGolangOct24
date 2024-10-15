@@ -1,4 +1,62 @@
-Lab9 - accept empno as os.Args or scan (valid input -> 1 to 12)
+Lab11 - channel 
+            observe- comment defer close line and check deadlock message
+            package main
+            
+            import (
+            	"fmt"
+            //	"time"
+            )
+            func main(){
+            	ch := make(chan int)
+            	go print("x", ch)
+            
+            	fmt.Println("waiting for some input on channel ")
+            	for percent:= range ch {
+            			fmt.Println(".. input received on channel ", percent)
+            		}
+            }
+            
+            func print(str string,ch chan int){
+            	defer close(ch)	
+            	for i:=1;i<=500;i++{
+            		fmt.Print(str , " ")
+            		if i % 100 == 0 {
+            			fmt.Println("\n", str , " is ", i / 5 , " % done !!")
+            			ch <- i/5
+            		}
+            	}	
+            }
+
+Lab10 - check -> no scan or sleep option in main, observe main does not wait for go routines to complete
+                 for bigger number like 500, observe time slicing, go for small sleep in for loop and see predictable round robin         
+            package main
+            
+            import (
+            	"fmt"
+            	"time"
+            )
+            
+            func main(){
+            	go print("x")
+            	go print("-")
+            	go print("o")
+            	fmt.Println("Done !!")
+            	//Options -  1. wait for io  2. sleep
+            /*
+            	i := 0
+            	fmt.Println("Enter a number to continue")
+            	fmt.Scanln(&i)
+            */
+            	time.Sleep(10 * time.Second)
+            }
+            
+            func print(str string){
+            	for i:=0;i<500;i++{
+            		fmt.Print(str , " ")
+            	}
+            }
+Lab9 -     Lab4
+            accept empno as os.Args or scan (valid input -> 1 to 12)
             if resp header is 404 - show invalid empno 
             just show empname = firstname lastname 
             add results  in log files
