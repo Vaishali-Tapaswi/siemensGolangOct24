@@ -1,3 +1,47 @@
+Lab4 - create Lab6.go 
+            create Emp struct with empno, ename, salary 
+            Write two receiver functions
+                        print 
+                        salincr(int percent)
+        
+
+Lab3 - receiver functions
+      package main 
+      import "fmt"
+      type Vertex struct {
+      	X int
+      	Y int
+      }
+      //function 
+      func print(v Vertex){
+      	fmt.Println("print function " , v.X , v.Y )
+      }
+      //function 
+      func shift(v *Vertex, dx int, dy int){
+      	v.X += dx
+      	v.Y += dy
+      	fmt.Println("in shift function" , v)
+      }
+      
+      //A method is a function with a special receiver argument
+      func (v Vertex) print(){
+      	fmt.Println("print method with receiver arg " , v.X , v.Y )
+      }
+      func (v *Vertex) shift( dx int, dy int){
+      	v.X += dx
+      	v.Y += dy
+      	fmt.Println("in shift method " , v)
+      }
+      
+      func main(){
+      	v1 := Vertex{10,15}
+      	print(v1)
+      	v1.print()
+      	shift(&v1, 5, 7)
+      	v1.shift(5, 7)
+      	print(v1)
+      }
+
 Lab2 - make and append 
       package main 
       import "fmt"
