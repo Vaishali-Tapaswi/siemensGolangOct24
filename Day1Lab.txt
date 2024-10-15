@@ -1,14 +1,24 @@
 Lab11 - Lab2.go
-        Create a struct Emp 
-        	Empno int, Ename string, Salary float 
-        
-        Create array of  Emp, accept details from user,
-        	
-        Print 3 Employee 
-        
-        1. Accept - how many employees
-        2. Accept those many employee details 
-        3. Print details in Table
+  package main 
+import "fmt"
+type Emp struct {
+	Empno int
+	Ename string
+	Salary float32
+}
+func main(){
+	var emparr [3]Emp
+	
+	for i:=0;i<len(emparr);i++{
+		emp := Emp{}
+		fmt.Println("EMp = " , emp)
+		fmt.Println("Enter Employee details ")
+		fmt.Scanf("%d%s%f", &emp.Empno, &emp.Ename, &emp.Salary)
+		fmt.Println("EMp = " , emp)
+		emparr[i] = emp
+	}
+	fmt.Println(emparr)
+}
 
 Lab10 - Create demo2 project
         Lab1.go 
