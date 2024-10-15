@@ -1,3 +1,32 @@
+Lab5 - interfaces
+            package main
+            
+            import "fmt"
+            import "reflect"
+            type Emp struct {
+            	Id     int
+            	Name   string
+            	Salary float32
+            }
+            type tostr interface {
+            	Convert() string 
+            }
+            func (emp Emp) Convert() string {
+            	return "Convert is returning " + emp.Name
+            }
+            
+            func main(){
+            	emp := Emp{1,"AA",111}
+            	fmt.Println(emp)
+            	fmt.Printf("%T \n", emp)
+            	fmt.Println(reflect.TypeOf(emp))
+            	var myinterface tostr
+            	myinterface = emp
+            	fmt.Println(reflect.TypeOf(myinterface))
+            	str:=myinterface.Convert()
+            	fmt.Println(str)
+            	emp.Convert()
+            }
 Lab4 - create Lab6.go 
             create Emp struct with empno, ename, salary 
             Write two receiver functions
