@@ -28,11 +28,50 @@ Lab5 - interfaces
             	emp.Convert()
             }
 Lab4 - create Lab6.go 
-            create Emp struct with empno, ename, salary 
-            Write two receiver functions
-                        print 
-                        salincr(int percent)
-        
+            package main
+            
+            import (
+            	"fmt"
+            )
+            
+            type Emp struct {
+            	Id     int
+            	Name   string
+            	Salary float32
+            }
+            type EmpMgr struct{
+              empcoll []Emp 
+            }
+            func (mgr *EmpMgr) AddEmp(emp Emp){
+              mgr.empcoll = append(mgr.empcoll, emp)
+            }
+            func (mgr EmpMgr) Print(){
+              fmt.Println(  "Number   Id\t\t Name\t\t Salary")
+              for i, v := range mgr.empcoll {
+            		fmt.Println(i , "  = ", v.Id, "\t\t ", v.Name, "\t\t ", v.Salary)
+            	}
+            }	
+            
+            func (e Emp) Print() {
+            	fmt.Printf("Name: %s\n", e.Name)
+            	fmt.Printf("Number: %d\n", e.Id)
+            	fmt.Printf("Salary: %f\n", e.Salary)
+            }
+            
+            func (e *Emp) RaiseSalary(percentage int) {
+            	e.Salary = e.Salary + e.Salary*float32(percentage)/100
+            }
+            
+            func main() {
+              empmgr := EmpMgr{}
+            	e := Emp{ 100, "John",50000}
+            	e.RaiseSalary(10)
+              empmgr.AddEmp(e)
+              empmgr.AddEmp(Emp{ 200, "Henr",70000})
+              empmgr.AddEmp(Emp{ 300, "Tom",90000})
+              empmgr.Print()
+            }
+
 
 Lab3 - receiver functions
       package main 
