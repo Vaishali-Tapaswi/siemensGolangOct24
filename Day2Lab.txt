@@ -1,3 +1,31 @@
+Lab6 - module dependency 
+            Create a new folder - Demo3
+            Lab1.go 
+                        package main
+                        
+                        import (
+                        	"fmt"
+                        	"github.com/magiconair/properties"
+                        )
+                        
+                        func main(){
+                        	prop := properties.MustLoadFile("demo.properties", properties.UTF8)
+                        	fmt.Println(prop)
+                        	v, ok := prop.Get("host")
+                        	fmt.Println(v, ok)
+                        	v, ok = prop.Get("port")
+                        	fmt.Println(v, ok)
+                        }
+            cmd>go run Lab1
+            cmd>go mod init {modname}
+                        check go.mod file created
+            cmd>go mod tidy 
+                        check go.sum and gopath folder where dependencies are downloaded
+            cmd>go run Lab1
+                        error 
+            create demo.properties with host and port as keys
+            cmd>go run Lab1
+
 Lab5 - interfaces
             package main
             
