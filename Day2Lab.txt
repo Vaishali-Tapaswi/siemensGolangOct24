@@ -1,3 +1,56 @@
+Lab9 - accept empno as os.Args or scan (valid input -> 1 to 12)
+            if resp header is 404 - show invalid empno 
+            just show empname = firstname lastname 
+            add results  in log files
+Lab8 - http get 
+            package main
+            import (
+            	"fmt"
+            	"net/http"
+            	"io"
+            	"log"
+            )
+            func main(){
+            	//
+            	resp, err := http.Get("https://reqres.in/api/users/2")
+            	fmt.Println(resp, "\n", err)
+            	fmt.Println("Status = " , resp.Status , resp.StatusCode)
+            	b, err := io.ReadAll(resp.Body)
+            	if err != nil {
+            		log.Fatal(err)
+            	}
+            	fmt.Println("body content = " , string(b))
+            }
+Lab7 - json 
+            package main
+            
+            import (
+            	"fmt"
+            	"encoding/json"
+            	"os"
+            	"log"
+            )
+            type Emp struct {
+            	Id     int `json:"empno"`
+            	Name   string `json:"ename"`
+            	Salary float32 `json:"salary"`
+            }
+            
+            func main(){
+            	emp:= Emp{10,"AAA",111.11}
+            	barr, err := json.Marshal(emp)
+            	fmt.Println("barr=", string(barr), "err = ", err)
+            	data, err := os.ReadFile("emp.txt")
+            	if err != nil {
+            		log.Fatal(err)
+            	}
+            	e1 := Emp{}
+            	err = json.Unmarshal(data, &e1)
+            	if err != nil {
+            		log.Fatal(err)
+            	}
+            	fmt.Println("Emp = " , e1)
+            }
 Lab6 - module dependency 
             Create a new folder - Demo3
             Lab1.go 
