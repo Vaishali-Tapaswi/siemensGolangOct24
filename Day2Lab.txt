@@ -1,0 +1,43 @@
+Lab2 - make and append 
+      package main 
+      import "fmt"
+      
+      func main(){
+      	//sl1 := make([]int,3)
+      	sl1 := []int{11,22,33}
+      	fmt.Println(sl1)
+      	fmt.Println(" sl1 length = " , len(sl1), " capacity = ", cap(sl1))
+      	//func append(s []T, vs ...T) []T
+      	sl1 = append(sl1, 44)
+      	fmt.Println(sl1)
+      	fmt.Println(" sl1 length = " , len(sl1), " capacity = ", cap(sl1))
+      	sl1 = append(sl1, 55)
+      	fmt.Println(sl1)
+      	sl1 = append(sl1, 66)
+      	fmt.Println(sl1)
+      	fmt.Println(" sl1 length = " , len(sl1), " capacity = ", cap(sl1))
+      	sl1 = append(sl1, 77)
+      	fmt.Println(sl1)
+      	fmt.Println(" sl1 length = " , len(sl1), " capacity = ", cap(sl1))
+      
+      }
+Lab1 - in demo2 folder - Lab3 - slice
+      package main 
+      import "fmt"
+      
+      func main(){
+      	//Array - Fixed Size 
+      	primes := [6]int{2, 3, 5, 7, 11, 13}
+      	fmt.Println(primes)
+      	// Slice - Dynamic Size 
+      	sl1 := primes[:]
+      	fmt.Println(sl1)
+      
+      	sl2 := primes[0:2]
+      	fmt.Println(sl2)
+      
+      	sl2 = primes[2:5]
+      	sl2[0]= 999
+      	fmt.Println(sl2)
+      	fmt.Println("Array " , primes)
+      }
