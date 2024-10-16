@@ -1,3 +1,39 @@
+Lab3 - create Lab3.go 
+            package main
+            
+            import "fmt"
+            func swap(s1,s2 string)(string, string) {
+            	return s2, s1;
+            }
+            func calc(no1, no2 int )(int, int){
+            	return no1+no2, no1-no2
+            }
+            func main() {
+            	fmt.Println("..")
+            }
+      create Lab3_test.go 
+          package main
+
+           import "testing"
+           
+           func TestCalc(t *testing.T){
+           	gotsum, gotsub := calc(10,50)
+           	if (gotsum != 60 ){
+           		t.Errorf("calc(10,50) = %d; want 60", gotsum)
+           	}
+           	if (gotsub != -40){
+           		t.Errorf("calc(10,50) = %d; want -40", gotsub)
+           	}
+           }
+           	
+    cmd>go test Lab3_test.go Lab3.go 
+     check flags like -v -cover
+    to find coverage
+      go test  Lab3_test.go Lab3.go -v -cover -coverprofile out.txt
+      go tool cover -html=out.txt -o out.html
+      open html page
+
+  Write test case for swap
 Lab2 - create table Emp(empno numeric primary key, ename varchar(20), salary numeric)
  
         
