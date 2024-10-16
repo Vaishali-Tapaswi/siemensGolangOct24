@@ -1,3 +1,33 @@
+Lab5 - http (get/post and json)
+      package main
+      
+      import (
+      	"fmt"
+      	"log"
+      	"net/http"
+      	"io"
+      )
+      func myhandlefunc(w http.ResponseWriter, r *http.Request) {
+      	switch method := r.Method; method {
+      	case "GET":
+      		fmt.Fprint(w, "<h1>Get Method</h1>"+ r.Method)
+      	case "POST":
+      		fmt.Fprint(w, "<h1>Post Method</h1>"+ r.Method)
+      		b, err := io.ReadAll(r.Body)
+                  	if err != nil {
+                  		log.Fatal(err)
+                  	}
+                  fmt.Println("body content = " , string(b))
+      		// Convert into json object and insert into db		
+      
+      	  }
+      }
+      func main() {
+      	
+      	http.HandleFunc("/dept", myhandlefunc)
+      	log.Fatal(http.ListenAndServe(":8080", nil))
+      }
+
 Lab4 - http server(Lab4)
       package main
       
