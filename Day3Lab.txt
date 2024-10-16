@@ -1,4 +1,22 @@
-Lab4 - benchmarking (https://blog.logrocket.com/benchmarking-golang-improve-function-performance/
+Lab4 - http server(Lab4)
+      package main
+      
+      import (
+      	"fmt"
+      	"log"
+      	"net/http"
+      )
+      
+      func main() {
+      
+      	http.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
+      		fmt.Fprint(w, "<h1>Hello World !!</h1>")
+      	})
+      
+      	log.Fatal(http.ListenAndServe(":8080", nil))
+      }
+
+Lab3-a - benchmarking (https://blog.logrocket.com/benchmarking-golang-improve-function-performance/
                      https://medium.com/hyperskill/testing-and-benchmarking-in-go-e33a54b413e               
             add to  Lab3_test.go 
             func BenchmarkCalc(b *testing.B) {
