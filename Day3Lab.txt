@@ -1,4 +1,4 @@
-constr :="admin:MyPassword@tcp(database-1.ctu244mmwtr1.us-east-1:3306)/mydb"
+
 Lab2 - db connection 
         create new folder demo4 
         Lab1.go 
