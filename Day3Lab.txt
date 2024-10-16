@@ -1,11 +1,20 @@
-
+Lab2 - 
+        
+        1. function to Get db connection 
+        2. Struct -> Emp  
+        	empno, ename, salary 
+        3. Struct -> EmpMgr
+        		receiver methods 
+        			create(Emp )
+        			list () ([]Emp)
+        4. main method to invoke 			
 Lab2 - db connection 
         create new folder demo4 
         Lab1.go 
                 package main 
                 import 	(
                 	"database/sql"
-                    _ "github.com/go-sql-driver/mysql"
+                         _ "github.com/go-sql-driver/mysql"
                 	"fmt"
                 )
                 
