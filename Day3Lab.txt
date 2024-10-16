@@ -1,3 +1,14 @@
+Lab4 - benchmarking (https://blog.logrocket.com/benchmarking-golang-improve-function-performance/
+                     https://medium.com/hyperskill/testing-and-benchmarking-in-go-e33a54b413e               
+            add to  Lab3_test.go 
+            func BenchmarkCalc(b *testing.B) {
+                for i:=0;i< b.N;i++ {
+                    calc(10,50)
+                }
+            }
+     cmd>go test  Lab3_test.go Lab3.go -bench=.
+     cmd>go test  Lab3_test.go Lab3.go -bench=. -count 5       
+
 Lab3 - create Lab3.go 
             package main
             
