@@ -2,6 +2,17 @@ Lab3 - create Lab3.go
             package main
             
             import "fmt"
+            
+            func divide(s1, s2 string) int {
+            	no1,_:=strconv.Atoi(s1)
+            	no2,_:=strconv.Atoi(s2)
+            	return no1/no2
+            }
+            //fmt.Println(divide("100","0"))
+            -------------> panic -
+            //fmt.Println(divide("A","10"))
+            -------------> for invalid first argument - ans -> 0
+
             func swap(s1,s2 string)(string, string) {
             	return s2, s1;
             }
