@@ -1,0 +1,8 @@
+Lab1 - Demo3\Lab7.go
+        create a struct bank - balance int 
+       2 functions - deposit , widraw 
+                  for loop 100 - increment/decrement balance by 1 
+       main 
+          invoke both 
+          after both are done -> channels or sleep or wait io
+            show balance
