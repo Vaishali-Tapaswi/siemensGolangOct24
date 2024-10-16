@@ -1,3 +1,29 @@
+Lab2 - db connection 
+        create new folder demo4 
+        Lab1.go 
+                package main 
+                import 	(
+                	"database/sql"
+                    _ "github.com/go-sql-driver/mysql"
+                	"fmt"
+                )
+                
+                func main(){
+                
+                	db, err := sql.Open("mysql", constr)
+                	defer db.Close()
+                	fmt.Println("Err = ", err)
+                	fmt.Println("Db =", db)
+                	// create table dept (deptno numeric primary key, dname varchar(20), loc varchar(20))
+                	insertsql := "insert into dept values (20, 'Fin','Hyd')"
+                	result, err := db.Exec(insertsql)
+                	fmt.Println("Insert Err = ", err)
+                	rsaff, err := result.RowsAffected() 
+                	fmt.Println("result =", rsaff)
+                }
+        cmd> dependency mngt (go mod init modname, go mod tidy)
+        cmd>go run . 
+
 
 Lab1 - Demo3\Lab7.go
         create a struct bank - balance int 
