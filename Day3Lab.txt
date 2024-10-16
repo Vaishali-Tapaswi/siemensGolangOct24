@@ -1,3 +1,4 @@
+
 Lab1 - Demo3\Lab7.go
         create a struct bank - balance int 
        2 functions - deposit , widraw 
@@ -6,3 +7,69 @@ Lab1 - Demo3\Lab7.go
           invoke both 
           after both are done -> channels or sleep or wait io
             show balance
+        Modify for Mutex
+                package main
+                
+                import (
+                	"fmt"
+                	"time"
+                	"sync"
+                )
+                
+                type Bank struct {
+                	balance int
+                }
+                
+                func closech(ch chan int) {
+                	if chclose == false {
+                		close(ch)
+                		chclose = true
+                	}
+                }
+                
+                var chclose = false
+                
+                func main() {
+                	//ch := make(chan int)
+                	var mutex sync.Mutex	
+                	bnk := Bank{0}
+                	ch := make(chan int)
+                
+                	go bnk.deposit(ch,&mutex)
+                	go bnk.withdraw(ch,&mutex)
+                	fmt.Println("After both the goroutines are started ", bnk.balance)
+                
+                	time.Sleep(5 * time.Second)
+                	fmt.Println("After both the goroutines are started ", bnk.balance)
+                }
+                
+                func (b *Bank) deposit(ch chan int, mutex *sync.Mutex) {
+                	defer closech(ch)
+                	for i := 1; i <= 1000; i++ {
+                		mutex.Lock()
+                		bal := b.balance
+                		bal += 1
+                		time.Sleep(1 * time.Millisecond)
+                		b.balance = bal
+                		mutex.Unlock()
+                		if i%100 == 0 {
+                			fmt.Println("balanace after deposit is ", b.balance)
+                		}
+                	}
+                }
+                
+                func (b *Bank) withdraw(ch chan int, mutex *sync.Mutex) {
+                	defer closech(ch)
+                	for i := 1; i <= 1000; i++ {
+                		mutex.Lock()
+                		bal := b.balance
+                		bal -= 1
+                		time.Sleep(1 * time.Millisecond)
+                		b.balance = bal
+                		mutex.Unlock()
+                		if i%100 == 0 {
+                
+                			fmt.Println("balanace after withdraw is ", b.balance)
+                		}
+                	}
+                }
