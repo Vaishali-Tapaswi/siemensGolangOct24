@@ -1,3 +1,42 @@
+Lab6 - Lambda in folder Demo7
+      Create a file bootstrap.go
+            package main
+
+            import (
+            	"context"
+            	"fmt"
+            	"github.com/aws/aws-lambda-go/lambda"
+            )
+            
+            type MyEvent struct {
+            	Name string `json:"name"`
+            }
+            
+            func HandleRequest(ctx context.Context, event *MyEvent) (*string, error) {
+            	if event == nil {
+            		return nil, fmt.Errorf("received nil event")
+            	}
+            	message := fmt.Sprintf("Hello %s!", event.Name)
+            	return &message, nil
+            }
+            
+            func main() {
+            	lambda.Start(HandleRequest)
+            }
+      cmd>create mod, tidy 
+      cmd>set GOOS=linux
+      cmd>set GOARCH=amd64
+      cmd>set CGO_ENABLED=0
+      cmd>go build .
+            create zip of boostrap (build-lambda-zip or just windows zip )
+      Login to AWS Console -> create a lambda function, any name, 
+		runtime custom - linux , arch - x86_64
+			create function
+			code -> upload from -> select zip file 
+		test -> test without json -> watch error 
+			test with wrong json -> just hello !
+			test with json {"name":"test"} -> hello test!
+
 Lab5 - create go build output for linux
 	cmd>cd demo6
 	cmd>set GOOS=linux
