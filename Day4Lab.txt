@@ -1,3 +1,11 @@
+Lab5 - create go build output for linux
+	cmd>cd demo6
+	cmd>set GOOS=linux
+	cmd>set GOARCH=amd64
+	cmd>go build . 
+	cmd>dir (web output file)
+	copy web file to linux machine and test 
+
 Lab4 - Create docker image 
 	create a folder tmp and two files 
 		mkdir tmp
