@@ -1,3 +1,101 @@
+Lab2 - create new folder demo6
+        create new folder demo6\dblib
+            create two files in dblib
+                struct.go
+                    package dblib
+                    
+                    type Emp struct {
+                    	EmpNo  int     `json:"empno"`
+                    	EName  string  `json:"ename"`
+                    	Salary float64 `json:"salary"`
+                    }
+                    
+                    type EmpMgr struct {
+                    }
+              dblib.go
+                package dblib
+                
+                import (
+                	"database/sql"
+                	_ "github.com/go-sql-driver/mysql"
+                )
+                
+                func getDBConnection() *sql.DB {
+                	dsn := "admin:MyPassword@tcp(database-1.ctu244mmwtr1.us-east-1.rds.amazonaws.com:3306)/mydb"
+                	db, err := sql.Open("mysql", dsn)
+                	if err != nil {
+                		panic("Problem in getting database connection")
+                	}
+                	return db
+                }
+                
+                func (mgr *EmpMgr) Create(emp Emp) error {
+                	dbConnection := getDBConnection()
+                	defer dbConnection.Close()
+                	query := "INSERT INTO Emp (empno, ename, salary) VALUES (?, ?, ?)"
+                	_, err := dbConnection.Exec(query, emp.EmpNo, emp.EName, emp.Salary)
+                	return err
+                }
+                
+                func (mgr *EmpMgr) List() ([]Emp, error) {
+                	dbConnection := getDBConnection()
+                	defer dbConnection.Close()
+                	query := "SELECT * FROM Emp"
+                	rows, err := dbConnection.Query(query)
+                	if err != nil {
+                		return nil, err
+                	}
+                	defer rows.Close()
+                	var employees []Emp
+                	for rows.Next() {
+                		var emp Emp
+                		rows.Scan(&emp.EmpNo, &emp.EName, &emp.Salary)
+                		employees = append(employees, emp)
+                	}
+                	return employees, nil
+                }
+    create file web.go in demo6 
+            package main
+
+            import (
+            	"example.com/dblib"
+            	"encoding/json"
+            	"fmt"
+            	"log"
+            	"net/http"
+            )
+            
+            func myhandlefunc(w http.ResponseWriter, r *http.Request) {
+            	mgr := dblib.EmpMgr{}
+            	switch method := r.Method; method {
+            	case "GET":
+            		if employees, err := mgr.List(); err != nil {
+            			fmt.Println(err)
+            		} else {
+            			barr, _ := json.Marshal(employees)
+            			w.Write(barr)
+            		}
+            	case "POST":
+            		fmt.Fprint(w, "<h1>Post Method</h1>"+r.Method)
+            		emp := dblib.Emp{}
+            		err := json.NewDecoder(r.Body).Decode(&emp)
+            		fmt.Println("err", err)
+            		fmt.Println("in post ", emp)
+            		if err := mgr.Create(emp); err != nil {
+            			fmt.Println(err)
+            		}
+            		fmt.Fprint(w, "<h1>Inserted </h1>")
+            	}
+            }
+            func main() {
+            
+            	http.HandleFunc("/dept", myhandlefunc)
+            	log.Fatal(http.ListenAndServe(":8080", nil))
+            }
+    create mod files for both , go mod edit replace,
+
+    create exe and run 
+        
 Lab1 - library and client to call
     create a folder demo5
     create two folders calc, client in demo5
