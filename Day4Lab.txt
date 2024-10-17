@@ -1,0 +1,44 @@
+Lab1 - library and client to call
+    create a folder demo5
+    create two folders calc, client in demo5
+    	1) write demo1.go demo5\calc 
+          	package calc
+          	import (
+          		"fmt"
+          	)
+          
+          	func Add(no1, no2 int) int {
+          		fmt.Println("Calc add invoked with ", no1, no2)
+          		return no1 + no2
+          	}
+          	func Divide(no1, no2 int) int {
+          		fmt.Println("Calc divide invoked with ", no1, no2)
+          		return no1 / no2
+          	}
+    
+    	cmd\demo5\calc>go mod init tempcom/calc 
+    	cmd\demo5\calc>go mod tidy 
+
+    2) Write client.go in demo5\client
+          package main
+          
+          import (
+          	"fmt"
+          	"tempcom/calc"
+          )
+          
+          func main() {
+          	no1, no2 := 100, 30
+          	res := calc.Add(no1, no2)
+          	fmt.Println("Result of add = ", res)
+          	res = calc.Divide(no1, no2)
+          	fmt.Println("Result of Divide = ", res)
+          }
+      cmd\demo5\client>go mod init client
+      cmd\demo5\client>go mod tidy 
+        run the client code and watch error 
+      cmd\demo5\client>go mod edit -replace tempcom/calc=../calc 
+      cmd\demo5\client>go mod tidy 
+      cmd\demo5\client>go run Client
+
+  
