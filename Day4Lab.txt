@@ -1,3 +1,22 @@
+Lab3 - Docker 
+	docker ps - list of containers
+	docker images - list of images
+	docker run imagename  - create a container 
+	
+	create a container for hello-world
+		docker run hello-world	
+			see messages for image not found, downloading 
+		docker run hello-world	
+			no download, just execution
+		docker ps	
+			no running container
+		docker ps -a
+			it will show you 2 containers
+	create tomcat container with port mapping 
+		docker run  -d -p 8080:8080 tomcat
+		docker run  -d -p 8081:8080 tomcat
+		click on open port and check 8080, 8081 (404 -> means server running)
+	
 Lab2 - create new folder demo6
         create new folder demo6\dblib
             create two files in dblib
