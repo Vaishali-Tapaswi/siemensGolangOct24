@@ -1,3 +1,34 @@
+Lab4 - Create docker image 
+	create a folder tmp and two files 
+		mkdir tmp
+		cd tmp
+		echo "" > demo.go
+		echo "" > dockerfile
+	click on editor to edit both the files
+	demo.go 
+	      package main
+	      
+	      import (
+	      	"fmt"
+	      	"log"
+	      	"net/http"
+	      )
+	      
+	      func main() {
+	      	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	      		fmt.Fprint(w, "<h1>Hello World !!</h1>")
+	      	})
+		fmt.Println("starting the server on 8080")
+	      	log.Fatal(http.ListenAndServe(":8080", nil))
+	      }
+	dockerfile
+		FROM golang
+		COPY demo.go .
+		EXPOSE 8080
+		CMD ["go", "run", "./demo.go"]
+	cmd in tmp>docker build . -t myimg
+	create a container from myimg by mapping 8085 to 8080 and check on browser 
+
 Lab3 - Docker 
 	docker ps - list of containers
 	docker images - list of images
